@@ -8,8 +8,8 @@
 
 After this lesson, you should be able to:
 
-- Create an application using Google Places API.
-- Show information from the database, based on the places found in a Map.
+- Create an application using the Google Places API.
+- Show information from the database, using places found in a Map.
 - Store information in the database, based on the user input.
 
 ## Requirements
@@ -37,9 +37,9 @@ All the files that make your Express app work, including the JavaScript files wh
 
 ## Introduction
 
-Everybody likes to go to the beach. But not everybody has a beach around, so some people has to do a lot of kilometers to go to the beach. What happens if once we are there, the weather is not the appropiate? Or you can't swim? Beach Finder will solve this!
+Everybody likes to go to the beach. But not everybody has a beach around. Some people have to travel quite a distance to find on. What happens if we show up and the weather is no good? Or the conditions are too dangerous to swim? Beach Finder will solve this!
 
-In this lesson, we are going to create a web application that will allow our users to see which is any beach status all over the world. How does it work?
+In this lesson, we are going to create a web application that will allow our users to see the state of these conditions for any beach around the world.
 
 The beach lifeguard uses a flag to indicate if you can swim, you have to be careful, or you can't swim. This is done with a color flag:
 
@@ -47,15 +47,15 @@ The beach lifeguard uses a flag to indicate if you can swim, you have to be care
 - Yellow. You have to be careful.
 - Red. It's forbidden to swim.
 
-Our application will allow people to search for any beach, and indicate which is the current flag where we are. Then, other users will be able to check out the status to decide if they can go there or not.
+Our application will allow people to search for any beach, and display the current flag color of it. Then, other users will be able to check out the status to decide if they can go there or not.
 
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_098293df2c08062a01b4c542faaedc3c.png)
+![](images/image-1.png)
 
-It looks like Miami Beach is a good destination today, you can swim, so go on!
+It looks like Miami Beach is a good destination today, you can swim, so grab a towel!
 
 ### Starter Code
 
-Note that our starter code for this exercise is quite comprehensive. We've already used the Express generator to create the initial project structure. We haven't added any extra file, so you have a plain project with the following folder structure:
+We've already used the Express generator to create the initial project structure. We haven't added any extra files, so you have a plain project with the following folder structure:
 
 ```
 starter-code/
@@ -76,15 +76,15 @@ starter-code/
     └── index.ejs
 ```
 
-To be able to complete the project, we recommend you to follow the following steps.
+To be able to complete the project, we recommend you follow the following steps.
 
 ## Iteration #1: Google Map
 
 The first thing we are going to do is create the Google Map and add it to the `index.ejs` view.
 
-To do that, remember you have to access to the [Google Developers Console](https://developers.google.com/maps/) and create an API Key to use **Google Places API**. It's quite similar to Google Maps, so don't be worried about that.
+To do that, remember you have to use the [Google Developers Console](https://developers.google.com/maps/) to create an API Key to use **Google Places API**. It's quite similar to Google Maps, so don't be too concerned about the differences.
 
-Once you have created the API Key, add the Map in the view and we will completed the first iteration.
+Once you have created the API Key, add the Map in the view.
 
 :::info
 Remember to give some `height` and `width` to the map container. If you don't do that, you will not be able to see your map.
@@ -96,23 +96,23 @@ Remember to give some `height` and `width` to the map container. If you don't do
 - Add the map to the project.
 - Remember to give the map container width and height.
 
-## Iteration #2: Search box
+## Iteration #2: Search-box
 
 Once we have added the map, we need a search box to look for our favorite beach. With Google Places API we can create an `<input type="text">` that will have an autocomplete, so it's going to be very helpful for our visitors.
 
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_210fa0a00f8d22a9cae32d21626e35a7.png)
+![](images/image-3.png)
 
 **This is why we are using Google Places instead of Google Maps API.** You can find how to create this Autocomplete in the [Places Autocomplete Documentation](https://developers.google.com/maps/documentation/javascript/places-autocomplete). Try to figure it out by yourself before ask for help :)
 
 :::info
-We can filter the options in the autocomplete by type. Unfortunately, there is no "Beach" type, we don't have to keep the type in mind. It means that the users will be able to indicate that Madrid has a green flag... even if they don't have any beach :P
+We can filter the options in the autocomplete by type. Unfortunately, there is no "Beach" type. This means that the users will be able to indicate that Madrid has a green flag... even if it doesn't have a beach :P
 :::
 
-Once you have the autocomplete in your textbox, you have to add a marker in the google map when the visitor indicates a beach. The workflow is the following:
+Once you have the autocomplete in your textbox, you have to add a marker in the google map when the visitor selects a beach. The workflow is the following:
 
 - The user looks for "Miami Beach, Florida".
 - The user selects the place and press "Search" button.
-- We center the map in Miami Beach, and add a marker on it.
+- We center the map on Miami Beach, and add a marker on it.
 
 This iteration is finished by adding this feature.
 
@@ -125,16 +125,18 @@ This iteration is finished by adding this feature.
   - Add a marker in the map
   - If there is another marker, remove it before add the new one
 
-## Iteration #3: Save beach status
+## Iteration #3: Save Beach Status
 
-Now we are going to add the flags container. This container will have three buttons with an image each one, that will allow the users select which is the current status of each beach.
+Now we are going to add the flags container. This container will have three buttons with an image in each one, that will allow the users select the current status of each beach.
 
-The flags have to appear just when we are showing a beach in the map. By default, the beach has to be empty, and it has to change its color in two moments:
+The flags will appear only when we are showing a beach on the map.
+
+By default, the status will be empty, and it will change its color on two different events:
 
 - On button hover.
 - When the users clicks on the button.
 
-Once the users clicks on the button, we have to save the beach and its status in the database. First of all we are going to check out if the beach already exists. If it exists, we will update the item in the collection. If it doesn't exist, we will create it.
+Once the users clicks on the button, we have to save the beach and its status in the database. First we are going to check if the beach already exists. If it exists, we will update the item in the collection. If it doesn't exist, we will create it.
 
 The beach model in our database will have the following structure:
 
@@ -159,21 +161,21 @@ Remember that we can force the user to save an specific value by using [Mongoose
 
 ## Iteration #4: Load beach status
 
-To finish up with this exercise, we need to add one more feature. Show the beach status. To do that we will use the flags, of course.
+To finish up with this exercise, we need to add one more feature: **showing the beach status**. To do that we will use the flags of course.
 
-When a user indicates a beach that is already stored in the database, we will show the user the flag color. We recommend you to create a css class called `selected` to indicate when a flag is selected.
+When a user selects a beach that is already stored in the database, we will show the user the flag color. We recommend you create a css class called `selected` to indicate when a flag is selected.
 
-In this case, if the user wants to know which is the Florida Beach status and we have already its value in the database (being the flag color yellow), we are going to add the `selected` class to the flag, so the user will see that he/she has to be careful on this beach.
+In this case, if the user wants to know what the status is of Miami Beach, and we have already its value in the database (being the flag color yellow), we are going to add the `selected` class to the flag, so the user will see that he/she has to be careful on this beach.
 
 **Tasks**
 
-- When the user indicates a beach, if we have its value stored in the database, we have to show it in the view.
+- When the user selects a beach, if we have its value stored in the database, we have to show it in the view.
 
-## Iteration #5 (Bonus): Status date
+## Iteration #5 (Bonus): Status Date
 
-As an extra iteration, we can add the date to the status. It's the best way for our users to know if the status has been setted up today or before.
+As a bonus, we can add the date to a status. It's the best way for our users to know if the status is from today or a previous day.
 
-To do that, we will have to add the `timestamps` to the database model. We are going to use the `updated_at` field to know when has been changed. To show our users a comprehensive date, we will format the date in the server with [`moment`](https://www.npmjs.com/package/moment).
+To do that, we will have to add the `timestamps` to the database model. We are going to use the `updated_at` field to know when it has been changed. To show our users a comprehensive date, we will format the date server-side with [`moment`](https://www.npmjs.com/package/moment).
 
 **Tasks**
 
