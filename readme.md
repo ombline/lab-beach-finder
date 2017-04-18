@@ -86,9 +86,8 @@ To do that, remember you have to use the [Google Developers Console](https://dev
 
 Once you have created the API Key, add the Map in the view.
 
-:::info
-Remember to give some `height` and `width` to the map container. If you don't do that, you will not be able to see your map.
-:::
+:bulb: **Remember to give some `height` and `width` to the map container. If you don't do that, you will not be able to see your map.**
+
 
 **Tasks**
 
@@ -104,9 +103,8 @@ Once we have added the map, we need a search box to look for our favorite beach.
 
 **This is why we are using Google Places instead of Google Maps API.** You can find how to create this Autocomplete in the [Places Autocomplete Documentation](https://developers.google.com/maps/documentation/javascript/places-autocomplete). Try to figure it out by yourself before ask for help :)
 
-:::info
-We can filter the options in the autocomplete by type. Unfortunately, there is no "Beach" type. This means that the users will be able to indicate that Madrid has a green flag... even if it doesn't have a beach :P
-:::
+:bulb: We can filter the options in the autocomplete by type. Unfortunately, there is no "Beach" type. This means that the users will be able to indicate that Madrid has a green flag... even if it doesn't have a beach :P
+
 
 Once you have the autocomplete in your textbox, you have to add a marker in the google map when the visitor selects a beach. The workflow is the following:
 
@@ -146,9 +144,8 @@ flag: String
   -> possible values: "red", "yellow", "green"
 ```
 
-:::info
-Remember that we can force the user to save an specific value by using [Mongoose Enums](http://mongoosejs.com/docs/api.html#schema_string_SchemaString-enum)
-:::
+:bulb: Remember that we can force the user to save an specific value by using [Mongoose Enums](http://mongoosejs.com/docs/api.html#schema_string_SchemaString-enum)
+
 
 **Tasks**
 
