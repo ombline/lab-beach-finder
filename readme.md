@@ -49,7 +49,7 @@ The beach lifeguard uses a flag to indicate if you can swim, you have to be care
 
 Our application will allow people to search for any beach, and display the current flag color of it. Then, other users will be able to check out the status to decide if they can go there or not.
 
-![](images/image-1.png)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_fb145e29c81a49875bc21aaa1774a6bd.png)
 
 It looks like Miami Beach is a good destination today, you can swim, so grab a towel!
 
@@ -99,7 +99,7 @@ Once you have created the API Key, add the Map in the view.
 
 Once we have added the map, we need a search box to look for our favorite beach. With Google Places API we can create an `<input type="text">` that will have an autocomplete, so it's going to be very helpful for our visitors.
 
-![](images/image-3.png)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_ea298996f85faafc1f2922faa2b24074.png)
 
 **This is why we are using Google Places instead of Google Maps API.** You can find how to create this Autocomplete in the [Places Autocomplete Documentation](https://developers.google.com/maps/documentation/javascript/places-autocomplete). Try to figure it out by yourself before ask for help :)
 
