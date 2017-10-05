@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Beach Finder</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div id="top">
+    <h1>Beach Finder</h1>
+    <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+    <div id="flags-container">
+      <button class="flag" id="flag1">&#9872;</button>
+      <button class="flag" id="flag2">&#9872;</button>
+      <button class="flag" id="flag3">&#9872;</button>
+    </div>
+  </div>
+    <div id="map"></div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC54SjBs30VKqAc_l6RyWrdRgnrSTyqUpE&libraries=places"></script>
+    <script type="text/javascript" src="/javascript/main.js"></script>
   </body>
 </html>
